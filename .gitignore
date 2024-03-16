@@ -1,13 +1,19 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+**/.angular/*
+**/.vscode/
+**/node_modules
+**/linux-distributions/package-lock.json
+
+#--------------------------------------
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+**/linux-distributions/dist
+**/linux-distributions/tmp
+**/linux-distributions/out-tsc
+**/linux-distributions/bazel-out
 
 # Node
-/node_modules
+**/linux-distributions/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -29,13 +35,13 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+**/linux-distributions/.angular/cache
 .sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
+**/linux-distributions/connect.lock
+**/linux-distributions/coverage
+**/linux-distributions/libpeerconnection.log
 testem.log
-/typings
+**/linux-distributions/typings
 
 # System files
 .DS_Store
