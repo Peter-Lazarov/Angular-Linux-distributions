@@ -1,0 +1,16 @@
+.all-systems {
+    list-style-type: none;
+}
+
+.operating-system {
+    margin: 2%;
+    border: 3px solid gray;
+    border-radius: 10px;
+    padding: 1%;
+    text-align: center;
+    max-width: 200px;
+}
+
+.operating-system img{
+    max-width: 200px;
+}
