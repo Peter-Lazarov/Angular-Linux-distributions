@@ -16,10 +16,10 @@ const environmentSchema = new mongoose.Schema({
         match: /^https?:\/\/.*$/,
         required: true
     },
-    // publisher:{
-    //     type: mongoose.Types.ObjectId,
-    //     ref: 'User'
-    // }
+    publisher:{
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 const Environment = mongoose.model('Environment', environmentSchema);

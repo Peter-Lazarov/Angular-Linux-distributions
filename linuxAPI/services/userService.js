@@ -9,6 +9,7 @@ const { secretKey } = require('../config');
 
 exports.register = async (userForm) => {
     const userFromDatabase = await User.findOne({ email: userForm.email });
+    //console.log(userForm);
 
     if(userFromDatabase){
         throw new Error('You must use another email');

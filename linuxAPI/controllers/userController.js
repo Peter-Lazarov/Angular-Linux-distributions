@@ -1,13 +1,13 @@
 const userController = require('express').Router();
+const userService = require('../services/userService');
 
 const { isAuthenticated } = require('../middlewares/userMiddleware');
-const userService = require('../services/userService');
 const { getErrorMessage } = require('../utility/errorsUtility');
 
 userController.post('/register', async (request, response) => {
     try{
         const userData = request.body;
-        //console.log('controler register ' + request.body);
+        //console.log('controler register ' + JSON.stringify(request.body));
         
         const { _id, email, name, token } = await userService.register(userData);
     

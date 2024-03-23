@@ -8,7 +8,7 @@ exports.create = async (userId, environmentData) => {
         ...environmentData
     });
     
-    //await User.findByIdAndUpdate(userId, { $push: { publishedEnvironments: createdEnvironment._id } });
+    await User.findByIdAndUpdate(userId, { $push: { publishedEnvironments: createdEnvironment._id } });
 
     return createdEnvironment;
 }

@@ -12,11 +12,10 @@ environmentController.get('/', async (request, response) => {
 
 environmentController.post('/create', async (request, response) => {
     const environmentForm = request.body;
-    console.log('request ' + JSON.stringify(request.body));
-    console.log('environmentForm' + JSON.stringify(environmentForm));
-    //request.user._id
+    //console.log(JSON.stringify(environmentForm));
+
     try {
-        const createdEnvironment = await environmentService.create("123", environmentForm);
+        const createdEnvironment = await environmentService.create(request.body.userId, environmentForm);
 
         response.json(createdEnvironment);
     } catch (error) {
