@@ -1,0 +1,56 @@
+<p>register works!</p>
+
+<form class="register" [formGroup]="registerForm" (ngSubmit)="register()">
+
+    <fieldset>
+        <h2>Registration Form</h2>
+
+        <p class="field">
+            <label for="email"><span>e-mail</span></label>
+            <input [class.input-error]="registerForm.get('email')?.invalid" type="email" name="email" id="email"
+                placeholder="ivan@mail.bg (8)" formControlName="email">
+        </p>
+        <ng-container *ngIf="registerForm.get('email')?.touched">
+            <p class="error" *ngIf="registerForm.get('email')?.errors?.['required']">e-mail is required</p>
+            <p class="error" *ngIf="registerForm.get('email')?.errors?.['emailValidator']">e-mail is not valid</p>
+            <p class="error" *ngIf="registerForm.get('email')?.errors?.['minlength']">e-mail must be at least 8 characters</p>
+        </ng-container>
+
+        <ng-container formGroupName="passwordGroup">
+            <!-- password -->
+            <p class="field">
+                <label for="password"><span>password</span></label>
+                <input [class.input-error]="registerForm.get('passwordGroup')?.get('password')?.invalid" type="password"
+                    name="password" id="password" placeholder="all characters (4)" formControlName="password">
+            </p>
+            <ng-container *ngIf="registerForm.get('passwordGroup')?.get('password')?.touched">
+                <p class="error" *ngIf="registerForm.get('passwordGroup')?.get('password')?.errors?.['required']">password is required</p>
+                <p class="error" *ngIf="registerForm.get('passwordGroup')?.get('password')?.errors?.['minlength']">it must be at least 4 characters</p>
+            </ng-container>
+            <!-- rePassword -->
+            <p class="field">
+                <label for="rePassword"><span>re-password</span></label>
+                <input [class.input-error]="registerForm.get('passwordGroup')?.invalid" type="password"
+                    name="rePassword" id="rePassword" placeholder="all characters (4)" formControlName="rePassword">
+            </p>
+            <ng-container *ngIf="registerForm.get('passwordGroup')?.get('rePassword')?.touched">
+                <p class="error" *ngIf="registerForm.get('passwordGroup')?.get('rePassword')?.errors?.['required']">re-password is required</p>
+                <p class="error" *ngIf="registerForm.get('passwordGroup')?.get('rePassword')?.errors?.['minlength']">it must be at least 4 characters</p>
+                <p class="error" *ngIf="registerForm.get('passwordGroup')?.errors?.['passwordsCompare']">must be the same as one above</p>
+            </ng-container>
+        </ng-container>
+
+        <p class="field">
+            <label for="name"><span>name</span></label>
+            <input [class.input-error]="registerForm.get('name')?.invalid" type="text" name="name" id="name"
+                placeholder="Ivan Todorov (3)" formControlName="name">
+        </p>
+        <ng-container *ngIf="registerForm.get('name')?.touched">
+            <p class="error" *ngIf="registerForm.get('name')?.errors?.['required']">name is required</p>
+            <p class="error" *ngIf="registerForm.get('name')?.errors?.['minlength']">name must be at least 3 characters</p>
+        </ng-container>
+
+        <button [disabled]="registerForm.invalid" [class]="registerForm.invalid ? 'disabled' : ''">Create
+            Account</button>
+    </fieldset>
+</form>
