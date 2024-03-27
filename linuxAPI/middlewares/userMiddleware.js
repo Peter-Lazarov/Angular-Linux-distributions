@@ -1,22 +1,23 @@
 const jsonwebtoken = require('jsonwebtoken');
 const { secretKey } = require('../config');
+const { authorisationCookie } = require('../utility/cookie');
 
 exports.userMiddleware = (request, response, next) => {
-    //console.log(request.headers);
-    const token = request.headers['x-authorization'];
-
+    const token = request.cookies[authorisationCookie] || '';
+    
     if(!token){
        return next();
     }
-
+    
     try {
         const decodedToken = jsonwebtoken.verify(token, secretKey);
-
         request.user = decodedToken;
         
         next();
     } catch (error) {
-        response.redirect('/user/login');
+        console.log(error);
+        response.clearCookie(authorisationCookie).status(204);
+        response.redirect('/');
     }
 };
 

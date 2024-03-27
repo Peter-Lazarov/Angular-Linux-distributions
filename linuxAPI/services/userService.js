@@ -50,11 +50,21 @@ exports.login = async (userData) => {
     }
 };
 
+exports.profileSearch = async (userObject) => {
+    const userFromDatabase = await User.findOne({ _id: userObject._id });
+
+    return {
+        _id: userFromDatabase._id,
+        email: userFromDatabase.email,
+        name: userFromDatabase.name
+    }
+};
+
 function generateToken(userObject){
     const payload = {
         _id: userObject._id,
         email: userObject.email
     };
 
-    return jsonwebtoken.sign(payload, secretKey, { expiresIn: '2h'});
+    return jsonwebtoken.sign(payload, secretKey, { expiresIn: '1m'});
 };
