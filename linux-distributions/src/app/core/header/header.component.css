@@ -22,6 +22,7 @@ header a {
     padding: 0 10px;
     text-decoration: none;
     color: aliceblue;
+    cursor: pointer;
 }
 
 header a:hover {
