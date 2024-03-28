@@ -9,12 +9,12 @@ const distributionController = require('./controllers/distributionController');
 const environmentController = require('./controllers/environmentController');
 
 //router.use('/', homeController);
-router.use('/', systemController);
+router.use('/system', systemController);
 router.use('/distribution', distributionController);
 router.use('/environment', environmentController);
 
 router.use('/user', userController);
-router.use('/stones', systemController);
+router.use('/stones', stoneController);
 
 router.all('*', (request, response) => {
     response.render('404');

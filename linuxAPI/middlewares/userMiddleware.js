@@ -2,7 +2,7 @@ const jsonwebtoken = require('jsonwebtoken');
 const { secretKey } = require('../config');
 const { authorisationCookie } = require('../utility/cookie');
 
-exports.userMiddleware = (request, response, next) => {
+exports.attachUserInRequest = (request, response, next) => {
     const token = request.cookies[authorisationCookie] || '';
     
     if(!token){
@@ -12,7 +12,7 @@ exports.userMiddleware = (request, response, next) => {
     try {
         const decodedToken = jsonwebtoken.verify(token, secretKey);
         request.user = decodedToken;
-        
+        //console.log('inMiddleware ' + JSON.stringify(request.user));
         next();
     } catch (error) {
         console.log(error);
@@ -25,7 +25,7 @@ exports.isAuthenticated = (request, response, next) => {
     if (!request.user) {
         return response.redirect('/user/login');
     }
-
+    //console.log('inAuthenticate ' + JSON.stringify(request.user));
     next();
 };
 

@@ -17,6 +17,8 @@ export class UserService implements OnDestroy{
   //apiUrlUser = apiObject.apiUrl + '/user';
 
   get isLogged(): boolean {
+    //console.log(!!this.user);
+    
     return !!this.user;
   }
 
@@ -42,7 +44,7 @@ export class UserService implements OnDestroy{
     return this.http.post<User>(`/api/user/register`, { email, password, rePassword, name })
       .pipe(tap(user => {
         this.user$$.next(user);
-      }));;
+      }));
   }
 
   logout() {   

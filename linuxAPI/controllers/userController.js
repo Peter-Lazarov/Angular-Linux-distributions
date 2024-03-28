@@ -13,7 +13,7 @@ userController.post('/register', async (request, response) => {
         const { _id, email, name, token } = await userService.register(userData);
 
         //response.cookie(authorisation, token, { httpOnly: true, sameSite: 'none', secure: true })
-        response.cookie(authorisationCookie, token, { httpOnly: true, sameSite: 'none', secure: true });
+        response.cookie(authorisationCookie, token, { httpOnly: true, sameSite: 'none', secure: false });
 
         response.json({
             _id,
@@ -41,7 +41,7 @@ userController.post('/login', async (request, response) => {
 
         const { _id, email, token } = await userService.login(userData);
 
-        response.cookie(authorisationCookie, token, { httpOnly: true, sameSite: 'none', secure: true });
+        response.cookie(authorisationCookie, token, { httpOnly: false, sameSite: 'none', secure: false });
         //console.log(authorisationCookie, token);
 
         response.json({
@@ -71,7 +71,7 @@ userController.post('/logout', isAuthenticated, (request, response) => {
 userController.get('/profile', async (request, response) => {
     try {
         const userObject = request.user;
-        console.log('userObject ' + userObject);
+        //console.log('userObject ' + userObject);
         
         const { _id, email, name } = await userService.profileSearch(userObject);
 

@@ -1,0 +1,20 @@
+<main>
+    <h2>All Linux distributions reviewed in site</h2>
+
+    <!-- {{#if stonesAll}} -->
+    <ul class="all-systems" *ngIf="systemsAll.length > 0">
+    <!-- {{#each stonesAll}} -->
+        <li *ngFor="let system of systemsAll" class="operating-system">
+            <img src="{{system.desktopEnvironment.image}}"/>
+            <h3>{{system.name}}</h3>
+            <p>{{system.desktopEnvironment.name}}</p>
+            <p>{{system.distribution.name}}</p>
+            <a class="details-button" href="/system/this._id">Details</a>
+        </li>
+    </ul>
+    
+    <!-- if there are no distributions -->
+    <div id="no-system" *ngIf="systemsAll.length == 0">
+        <h2>There are no distributions</h2>
+    </div>
+</main>

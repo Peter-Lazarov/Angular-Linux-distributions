@@ -1,4 +1,4 @@
-import { Commentar } from "./commentar";
+import { Commentary } from "./commentary";
 import { DesktopEnvironment } from "./desktop-environment";
 import { Distribution } from "./distribution";
 
@@ -7,5 +7,5 @@ export interface OperatingSystem {
     name: string,
     desktopEnvironment: DesktopEnvironment,
     distribution: Distribution,
-    commentaries: Commentar[]
+    commentaries: Commentary[]
 }

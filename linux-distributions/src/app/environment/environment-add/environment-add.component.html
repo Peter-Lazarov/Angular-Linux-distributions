@@ -1,0 +1,43 @@
+<form #environmentAddForm="ngForm" (ngSubmit)="addEnvironment(environmentAddForm)">
+    <div class="environmentName">
+        <ng-container *ngIf="inputEnvironmentName.touched">
+            <p class="error" *ngIf="inputEnvironmentName?.errors?.['required']">
+                Environment must have name.
+            </p>
+            <p class="error" *ngIf="inputEnvironmentName?.errors?.['minlength']">
+                The name must be more than 1 character.
+            </p>
+        </ng-container>
+        <label for="name">Desktop environment name</label>
+        <input type="text" name="name" #inputEnvironmentName="ngModel" ngModel required minlength="2">
+    </div>
+
+    <div class="environmentDescription">
+        <ng-container *ngIf="textareaEnvironmentDescription.touched">
+            <p class="error" *ngIf="textareaEnvironmentDescription?.errors?.['required']">
+                It is good to tell something about this desktop environment.
+            </p>
+            <p class="error" *ngIf="textareaEnvironmentDescription?.errors?.['minlength']">
+                It will be better to tell more :), atleast 10 characters.
+            </p>
+        </ng-container>
+        <label for="description">Desktop environment description</label>
+        <textarea type="text" name="description" #textareaEnvironmentDescription="ngModel" ngModel required
+            minlength="10"></textarea>
+    </div>
+
+    <div class="environmentImage">
+        <ng-container *ngIf="inputEnvironmentImage.touched">
+            <p class="error" *ngIf="inputEnvironmentImage?.errors?.['required']">
+                Environment must have image.
+            </p>
+            <p class="error" *ngIf="inputEnvironmentImage?.errors?.['minlength']">
+                The image must be more than 10 character.
+            </p>
+        </ng-container>
+        <label for="image">Desktop environment image link</label>
+        <input type="text" name="image" #inputEnvironmentImage="ngModel" ngModel required minlength="2" value="https://kubuntu.org/wp-content/uploads/2022/04/95a8/Kubuntu2204.png">
+    </div>
+
+    <button>Add environment</button>
+</form>

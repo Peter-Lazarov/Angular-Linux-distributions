@@ -4,16 +4,18 @@ const User = require('../models/User')
 
 exports.getAll = () => System.find();
 
-// exports.create = async (userId, stoneData) => {
-//     const createdStone = await Distribution.create({
-//         owner: userId,
-//         ...stoneData
-//     });
+exports.create = async (userId, systemData) => {
+    const systemCreated = await System.create({
+        publisher: userId,
+        ...systemData
+    });
 
-//     await User.findByIdAndUpdate(userId, { $push: { ownedStones: createdStone._id } });
+    await User.findByIdAndUpdate(userId, { $push: { publishedSystems: systemCreated._id } });
 
-//     return createdStone;
-// }
+    return systemCreated;
+}
+
+
 // exports.getOneWithOwnerAndLikes = (distributionId) => Distribution.findById(distributionId).populate('owner').populate('likedList');
 // exports.like = async (distributionId, userId) => {
 //     await Distribution.findByIdAndUpdate(distributionId, { $push: { likedList: userId } });

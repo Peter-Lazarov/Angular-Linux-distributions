@@ -1,6 +1,6 @@
 const systemController = require('express').Router();
 
-const { isAuthenticated } = require('../middlewares/userMiddleware');
+const userMiddleware = require('../middlewares/userMiddleware');
 const { getErrorMessage } = require('../utility/errorsUtility');
 const systemService = require('../services/systemService');
 
@@ -23,6 +23,28 @@ systemController.get('/:systemId/details', async (request, response) => {
 
     //response.render('systems/details', { ...systemDetails, isOwner, isLiked });
 });
+
+systemController.post('/add', userMiddleware.attachUserInRequest, userMiddleware.isAuthenticated, async (request, response) => {
+    let systemForm = request.body;
+
+    try {
+        //console.log('systemController add ' + JSON.stringify(request.user));
+        const systemCreated = await systemService.create(request.user._id, systemForm);
+        
+        response.json(systemCreated);
+    } catch (error) {
+        console.error(error);
+
+        const errorMessage = getErrorMessage(error);
+
+        if (error.name === 'ValidationError') {
+            response.status(400).json({ error: errorMessage });
+        } else {
+            response.status(500).json({ error: errorMessage });
+        }
+    }
+});
+
 
 async function isSystemOwner(systemId, userId) {
     const system = await systemService.getOne(systemId).lean();

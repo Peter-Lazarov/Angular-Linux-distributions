@@ -1,6 +1,6 @@
 const environmentController = require('express').Router();
 
-const { isAuthenticated } = require('../middlewares/userMiddleware');
+const userMiddleware = require('../middlewares/userMiddleware');
 const { getErrorMessage } = require('../utility/errorsUtility');
 const environmentService = require('../services/environmentService');
 
@@ -10,14 +10,14 @@ environmentController.get('/', async (request, response) => {
     response.json(environmentAll);
 });
 
-environmentController.post('/create', async (request, response) => {
-    const environmentForm = request.body;
-    //console.log(JSON.stringify(environmentForm));
+environmentController.post('/add', userMiddleware.attachUserInRequest, userMiddleware.isAuthenticated, async (request, response) => {
+    let environmentForm = request.body;
 
     try {
-        const createdEnvironment = await environmentService.create(request.body.userId, environmentForm);
-
-        response.json(createdEnvironment);
+        //console.log('environmentController add ' + JSON.stringify(request.user));
+        const senvironmentCreated = await environmentService.create(request.user._id, environmentForm);
+        
+        response.json(senvironmentCreated);
     } catch (error) {
         console.error(error);
 

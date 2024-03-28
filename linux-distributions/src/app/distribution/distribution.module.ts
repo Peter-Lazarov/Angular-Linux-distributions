@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DistributionDetailsComponent } from './distribution-details/distribution-details.component';
-import { DistributionAllComponent } from './distribution-all/distribution-all.component';
+import { DistributionAddComponent } from './distribution-add/distribution-add.component';
+import { FormsModule } from '@angular/forms';
+import { DistributionRoutingModule } from './distribution-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    DistributionDetailsComponent,
-    DistributionAllComponent
+    DistributionAddComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    DistributionRoutingModule
   ]
 })
 export class DistributionModule { }

@@ -1,14 +1,14 @@
-<p>header works!</p>
-
 <header>
     <nav>
         <div>
             <a routerLink="/">Home</a>
-            <a routerLink="/distribution">Linux distributions</a>
+            <a routerLink="/system">Linux Systems</a>
             <!-- <a href="/search">Search</a> -->
         </div>
         <div *ngIf="isLogged" class="user">
-            <a routerLink="/distribution/add">Add distribution</a>
+            <a routerLink="/system/add">add System</a>
+            <a routerLink="/environment/add">add Environment</a>
+            <a routerLink="/distribution/add">add Distribution</a>
             <a (click)="logout()">Logout</a>
         </div>
         

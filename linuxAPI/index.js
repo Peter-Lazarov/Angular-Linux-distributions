@@ -3,7 +3,7 @@ const routes = require('./router');
 const handlebars = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const { default: mongoose } = require('mongoose');
-const { userMiddleware } = require('./middlewares/userMiddleware');
+const { attachUserInRequest } = require('./middlewares/userMiddleware');
 const path = require('path');
 const cors = require('cors');
 
@@ -32,7 +32,7 @@ server.use(cors({
 
 server.use(express.json());
 server.use(cookieParser());
-server.use(userMiddleware);
+server.use(attachUserInRequest);
 
 server.use(routes);
 

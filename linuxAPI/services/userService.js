@@ -66,5 +66,5 @@ function generateToken(userObject){
         email: userObject.email
     };
 
-    return jsonwebtoken.sign(payload, secretKey, { expiresIn: '1m'});
+    return jsonwebtoken.sign(payload, secretKey, { expiresIn: '2d'});
 };

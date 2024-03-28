@@ -15,13 +15,14 @@ class AppInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (request.url.startsWith(this.apiPrefix)) {
-      //console.log(request.url);
-      //console.log(request.url.replace(this.apiPrefix, apiObject.apiUrl));
+      console.log(request.url);
+      console.log(request.url.replace(this.apiPrefix, apiObject.apiUrl));
       
       request = request.clone({
         url: request.url.replace(this.apiPrefix, apiObject.apiUrl),
         withCredentials: true
       })
+      console.log(request);
     }
 
     return next.handle(request).pipe(catchError((error) => {
