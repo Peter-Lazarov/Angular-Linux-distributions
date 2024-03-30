@@ -5,7 +5,15 @@ import { Distribution } from "./distribution";
 export interface OperatingSystem {
     _id: string,
     name: string,
-    desktopEnvironment: DesktopEnvironment,
+    environment: DesktopEnvironment,
+    distribution: Distribution
+}
+
+export interface OperatingSystemWithCommentariesAndPublisher {
+    _id: string,
+    name: string,
+    environment: DesktopEnvironment,
     distribution: Distribution,
-    commentaries: Commentary[]
+    commentaries: Commentary[],
+    publisher: string
 }

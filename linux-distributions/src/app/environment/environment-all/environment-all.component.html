@@ -1,0 +1,16 @@
+<main>
+    <h2>All desktop environments reviewed in site</h2>
+
+    <ul *ngIf="environmentsAll.length > 0">
+        <li *ngFor="let environment of environmentsAll">
+            <img src="{{environment.image}}"/>
+            <h3>{{environment.name}}</h3>
+            <p>{{environment.description}}</p>
+            <a class="details" href="/environment/this._id">Details</a>
+        </li>
+    </ul>
+    
+    <div id="no-environment" *ngIf="environmentsAll.length == 0">
+        <h2>There are no environments</h2>
+    </div>
+</main>

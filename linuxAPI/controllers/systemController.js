@@ -5,7 +5,7 @@ const { getErrorMessage } = require('../utility/errorsUtility');
 const systemService = require('../services/systemService');
 
 systemController.get('/', async (request, response) => {
-    const systemAll = await systemService.getAll().lean();
+    const systemAll = await systemService.getAll();
     
     response.json(systemAll);
 

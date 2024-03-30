@@ -13,8 +13,8 @@ const distributionSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        match: /^https?:\/\/.*$/,
-        required: true
+        //match: /^https?:\/\/.*$/,
+        required: false
     },
 })
 

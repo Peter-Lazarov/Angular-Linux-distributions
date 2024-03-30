@@ -1,0 +1,26 @@
+.form {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+label,
+.select span {
+    margin-right: 1%;
+}
+
+.systemName,
+.select,
+.systemDescription {
+    margin: 1%;
+}
+
+.systemDescription label {
+    vertical-align: top;
+}
+
+.systemDescription textarea {
+    width: 30%;
+}

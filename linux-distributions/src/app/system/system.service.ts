@@ -13,7 +13,7 @@ export class SystemService {
     return this.http.get<OperatingSystem[]>(`/api/system`);
   }
 
-  createSystem(name: string, environmentDescription: string) {
-    return this.http.post<OperatingSystem>(`/api/system/add`, { name, environmentDescription });
+  addSystem(name: string, environment: string, distribution: string) {
+    return this.http.post<OperatingSystem>(`/api/system/add`, { name, environment, distribution});
   }
 }

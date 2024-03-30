@@ -1,20 +1,17 @@
-.all-systems {
+ul{
     list-style-type: none;
 }
 
-.operating-system {
+li{
     margin: 2%;
     border: 3px solid gray;
     border-radius: 10px;
     padding: 1%;
     text-align: center;
-    max-width: 200px;
-}
-
-.operating-system img{
-    max-width: 200px;
-}
-
-li{
+    max-width: 400px;
     display: inline-block;
+}
+
+img{
+    max-width: 400px;
 }

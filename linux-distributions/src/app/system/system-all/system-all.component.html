@@ -5,9 +5,9 @@
     <ul class="all-systems" *ngIf="systemsAll.length > 0">
     <!-- {{#each stonesAll}} -->
         <li *ngFor="let system of systemsAll" class="operating-system">
-            <img src="{{system.desktopEnvironment.image}}"/>
+            <img src="{{system.environment.image}}"/>
             <h3>{{system.name}}</h3>
-            <p>{{system.desktopEnvironment.name}}</p>
+            <p>{{system.environment.name}}</p>
             <p>{{system.distribution.name}}</p>
             <a class="details-button" href="/system/this._id">Details</a>
         </li>

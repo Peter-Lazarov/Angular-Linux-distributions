@@ -37,12 +37,12 @@ export class SystemAddComponent implements OnInit {
       return;
     }
 
-    const { name, desktopEnvironment } = systemAddForm.value;
-    console.log({ name, desktopEnvironment });
+    const { name, environment, distribution } = systemAddForm.value;
+    //console.log({ name, environment, distribution });
 
-    // this.systemService.createSystem(name, desktopEnvironment).subscribe(() => {
-    //   this.router.navigate(['/system']);
-    // });
+    this.systemService.addSystem(name, environment, distribution).subscribe(() => {
+      this.router.navigate(['/system']);
+    });
 
   }
 }

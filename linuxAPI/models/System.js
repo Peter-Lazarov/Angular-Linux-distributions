@@ -6,9 +6,9 @@ const systemSchema = new mongoose.Schema({
         minlength: 2,
         required: true
     },
-    desktopEnvironment:{
+    environment:{
         type: mongoose.Types.ObjectId,
-        ref: 'DesktopEnvironment'
+        ref: 'Environment'
     },
     distribution:{
         type: mongoose.Types.ObjectId,

@@ -18,6 +18,7 @@ export class SystemAllComponent implements OnInit{
   ngOnInit(): void {
     this.systemService.getSystemAll().subscribe((system) => {
       this.systemsAll = system;
+      //console.log(this.systemsAll);
       
     });
   }

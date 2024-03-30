@@ -10,7 +10,7 @@ distributionController.get('/', async (request, response) => {
     response.json(distributionAll);
 });
 
-distributionController.post('/create', isAuthenticated, async (request, response) => {
+distributionController.post('/add', isAuthenticated, async (request, response) => {
     const distributionForm = request.body;
 
     try {

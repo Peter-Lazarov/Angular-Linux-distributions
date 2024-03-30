@@ -1,0 +1,35 @@
+.form {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+label,
+.select span {
+    margin-right: 1%;
+}
+
+.distributionName,
+.select,
+.distributionDescription,
+.distributionImage {
+    margin: 1%;
+}
+
+.distributionName input{
+    width: 20%;
+}
+
+.distributionDescription label {
+    vertical-align: top;
+}
+
+.distributionDescription textarea {
+    width: 30%;
+}
+
+.distributionImage input {
+    width: 45%;
+}

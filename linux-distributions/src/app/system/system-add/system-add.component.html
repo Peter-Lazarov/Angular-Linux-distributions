@@ -1,5 +1,5 @@
-<h2>Add Linux oparating system you know</h2>
-<form #systemAddForm="ngForm" (ngSubmit)="addSystem(systemAddForm)">
+<h2>add Linux oparating system you know</h2>
+<form #systemAddForm="ngForm" (ngSubmit)="addSystem(systemAddForm)" class="form">
     <!-- #themeAddForm="ngForm" (ngSubmit)="addTheme(themeAddForm)-->
     <!-- "form name in html", formType in html, Angular method for submit, function from class with from name here in html -->
     <div class="systemName">
@@ -15,32 +15,35 @@
         <input type="text" name="name" id="systemName" #inputSystemName="ngModel" ngModel required minlength="2">
     </div>
 
+    <div class="select">
+        <span>Desktop environment</span>
+        <select name="environment" ngModel>
+            <option value="" selected hidden>select desktop environment</option>
+            <option *ngFor="let environment of environmentsAll" [ngValue]="environment._id">{{environment.name}}</option>            
+        </select>
+    </div>
+    
+    <div class="select">
+        <span>Distribution</span>
+        <select name="distribution" ngModel>
+            <option value="" selected hidden>select distribution</option>
+            <option *ngFor="let distribution of distributionsAll" [ngValue]="distribution._id">{{distribution.name}}</option>
+        </select>
+    </div>
+    
     <div class="systemDescription">
         <ng-container *ngIf="textareaSystemDescription.touched">
             <p class="error" *ngIf="textareaSystemDescription?.errors?.['required']">
                 It is good to tell something about this desktop environment.
             </p>
             <p class="error" *ngIf="textareaSystemDescription?.errors?.['minlength']">
-                It will be better to tell more :), atleast 10 characters.
+                It will be better to tell more, atleast 10 characters :)
             </p>
         </ng-container>
         <label for="systemDescription">Description</label>
-        <textarea type="text" name="systemDescription" id="systemDescription" rows="8"
+        <textarea type="text" name="systemDescription" id="systemDescription" rows="3"
             #textareaSystemDescription="ngModel" ngModel required minlength="10"></textarea>
     </div>
-
-    <div>
-        <select name="desktopEnvironment" ngModel>
-            <option *ngFor="let environment of environmentsAll" [ngValue]="environment._id">{{environment.name}}</option>
-        </select>
-    </div>
-
-    <div>
-        <select name="distribution" ngModel>
-            <option *ngFor="let distribution of distributionsAll" [ngValue]="distribution._id">{{distribution.name}}</option>
-        </select>
-    </div>
-
 
     <div class="buttons">
         <!-- <button class="public" (click)="themeAdd($event, inputThemeName.value, textareaEnvironmentDescription.value)">Post</button> -->

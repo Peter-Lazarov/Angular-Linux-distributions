@@ -1,4 +1,5 @@
-<form #environmentAddForm="ngForm" (ngSubmit)="addEnvironment(environmentAddForm)">
+<h2>add Desktop Environment</h2>
+<form #environmentAddForm="ngForm" (ngSubmit)="addEnvironment(environmentAddForm)" class="form">
     <div class="environmentName">
         <ng-container *ngIf="inputEnvironmentName.touched">
             <p class="error" *ngIf="inputEnvironmentName?.errors?.['required']">
@@ -23,7 +24,7 @@
         </ng-container>
         <label for="description">Desktop environment description</label>
         <textarea type="text" name="description" #textareaEnvironmentDescription="ngModel" ngModel required
-            minlength="10"></textarea>
+           rows="3" minlength="10"></textarea>
     </div>
 
     <div class="environmentImage">
@@ -36,7 +37,7 @@
             </p>
         </ng-container>
         <label for="image">Desktop environment image link</label>
-        <input type="text" name="image" #inputEnvironmentImage="ngModel" ngModel required minlength="2" value="https://kubuntu.org/wp-content/uploads/2022/04/95a8/Kubuntu2204.png">
+        <input type="text" name="image" #inputEnvironmentImage="ngModel" ngModel required minlength="2">
     </div>
 
     <button>Add environment</button>

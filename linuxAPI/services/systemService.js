@@ -2,7 +2,7 @@ const System = require('../models/System');
 const User = require('../models/User')
 
 
-exports.getAll = () => System.find();
+exports.getAll = () => System.find().populate('environment').populate('distribution');
 
 exports.create = async (userId, systemData) => {
     const systemCreated = await System.create({

@@ -1,0 +1,35 @@
+.form {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+label,
+.select span {
+    margin-right: 1%;
+}
+
+.environmentName,
+.select,
+.environmentDescription,
+.environmentImage {
+    margin: 1%;
+}
+
+.environmentName input{
+    width: 20%;
+}
+
+.environmentDescription label {
+    vertical-align: top;
+}
+
+.environmentDescription textarea {
+    width: 30%;
+}
+
+.environmentImage input {
+    width: 45%;
+}
