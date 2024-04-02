@@ -32,11 +32,24 @@
     max-width: 100px;
     margin-right: 1em;
     margin-bottom: 1em;
-    
+
 }
 
-.commentaries{
+.commentaries {
     width: 70%;
     margin: 0 auto;
 }
 
+.publisher {
+    text-align: right;
+}
+
+.headline {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.edit-button{
+    margin: 0 2% 0 2%;
+}

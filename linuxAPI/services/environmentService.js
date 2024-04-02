@@ -12,3 +12,4 @@ exports.create = async (userId, environmentData) => {
 
     return createdEnvironment;
 }
+exports.getOne = (environmentId) => Environment.findById(environmentId);

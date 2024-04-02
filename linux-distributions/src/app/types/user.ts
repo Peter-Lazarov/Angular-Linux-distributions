@@ -9,3 +9,13 @@ export interface User {
     publishedCommentary: string[],
     updatedAt: string
 }
+
+export interface UserAsPublisher {
+    _id: string,
+    name: string,
+    publishedSystems: string[],
+    publishedEnvironments: string[],
+    publishedDistribution: string[],
+    publishedCommentary: string[],
+    updatedAt: string
+}

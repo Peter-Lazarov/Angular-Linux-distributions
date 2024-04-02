@@ -8,7 +8,7 @@ import { DistributionAllComponent } from "./distribution-all/distribution-all.co
 const routes: Routes = [
     { path: '', component: DistributionAllComponent},
     { path: 'add', component: DistributionAddComponent },
-    { path: ':id', component: DistributionDetailsComponent },
+    { path: ':id/details', component: DistributionDetailsComponent },
 ];
 
 @NgModule({

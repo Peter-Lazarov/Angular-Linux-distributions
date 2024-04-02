@@ -16,4 +16,8 @@ export class DistributionService {
   writeDistribution(name: string, description: string, image: string) {
     return this.http.post<Distribution>(`/api/distribution/add`, { name, description, image });
   }
+
+  getDitributionOne(distributionId: string) {
+    return this.http.get<Distribution>(`/api/distribution/${distributionId}/details`);
+  }
 }

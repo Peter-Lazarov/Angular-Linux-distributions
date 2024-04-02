@@ -14,9 +14,9 @@ const systemSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Distribution'
     },
-    commentaries: [{
+    commentary: [{
         type: mongoose.Types.ObjectId,
-        ref: 'Commentar'
+        ref: 'Commentary'
     }],
     publisher: {
         type: mongoose.Types.ObjectId,

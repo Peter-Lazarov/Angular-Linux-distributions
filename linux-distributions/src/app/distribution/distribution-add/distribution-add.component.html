@@ -1,5 +1,5 @@
 <h2>add Distribution</h2>
-<form #distributionAddForm="ngForm" (ngSubmit)="addDistribution(distributionAddForm)" class="form">
+<form #distributionAddForm="ngForm" (ngSubmit)="addDistribution(distributionAddForm)">
     <div class="distributionName">
         <ng-container *ngIf="inputDistributionName.touched">
             <p class="error" *ngIf="inputDistributionName?.errors?.['required']">

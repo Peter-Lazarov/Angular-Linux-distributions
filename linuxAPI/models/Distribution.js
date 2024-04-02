@@ -16,6 +16,10 @@ const distributionSchema = new mongoose.Schema({
         //match: /^https?:\/\/.*$/,
         required: false
     },
+    publisher:{
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 const Distribution = mongoose.model('Distribution', distributionSchema);

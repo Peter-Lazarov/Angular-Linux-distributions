@@ -31,4 +31,15 @@ environmentController.post('/add', userMiddleware.attachUserInRequest, userMiddl
     }
 });
 
+environmentController.get('/:environmentId/details', async (request, response) => {
+    const environmentDetails = await environmentService.getOne(request.params.environmentId).lean();
+    const environmentPublisherId = environmentDetails.publisher.toString();
+
+    const isPublisher = environmentPublisherId && environmentPublisherId == request.user?._id;
+
+    request.environmentCurrent = environmentDetails;
+    
+    response.json({ ...environmentDetails, isPublisher});
+});
+
 module.exports = environmentController;

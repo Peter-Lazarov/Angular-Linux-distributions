@@ -15,8 +15,9 @@ exports.create = async (userId, systemData) => {
     return systemCreated;
 }
 
+exports.getOneWithCommentariesAndPublisher = (systemId) => System.findById(systemId).populate('environment').populate('distribution').populate('commentary').populate('publisher');
+exports.edit = (systemId, systemData) => System.findByIdAndUpdate(systemId, systemData, { runValidators: true });
 
-// exports.getOneWithOwnerAndLikes = (distributionId) => Distribution.findById(distributionId).populate('owner').populate('likedList');
 // exports.like = async (distributionId, userId) => {
 //     await Distribution.findByIdAndUpdate(distributionId, { $push: { likedList: userId } });
 //     await User.findByIdAndUpdate(userId, { $push: { likedStones: distributionId } });

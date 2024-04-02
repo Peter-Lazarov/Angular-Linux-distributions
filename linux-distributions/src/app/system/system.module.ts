@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { SystemDetailsComponent } from './system-details/system-details.component';
 import { SystemAllComponent } from './system-all/system-all.component';
 import { SystemAddComponent } from './system-add/system-add.component';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SystemRoutingModule } from './system-routing.module';
-import { EnvironmentService } from '../environment/environment.service';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +16,8 @@ import { EnvironmentService } from '../environment/environment.service';
   imports: [
     CommonModule,
     FormsModule,
-    SystemRoutingModule
+    SystemRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class SystemModule { }

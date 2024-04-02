@@ -31,20 +31,6 @@
         </select>
     </div>
     
-    <div class="systemDescription">
-        <ng-container *ngIf="textareaSystemDescription.touched">
-            <p class="error" *ngIf="textareaSystemDescription?.errors?.['required']">
-                It is good to tell something about this desktop environment.
-            </p>
-            <p class="error" *ngIf="textareaSystemDescription?.errors?.['minlength']">
-                It will be better to tell more, atleast 10 characters :)
-            </p>
-        </ng-container>
-        <label for="systemDescription">Description</label>
-        <textarea type="text" name="systemDescription" id="systemDescription" rows="3"
-            #textareaSystemDescription="ngModel" ngModel required minlength="10"></textarea>
-    </div>
-
     <div class="buttons">
         <!-- <button class="public" (click)="themeAdd($event, inputThemeName.value, textareaEnvironmentDescription.value)">Post</button> -->
         <button>add System</button>

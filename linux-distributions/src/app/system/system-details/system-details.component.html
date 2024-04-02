@@ -1,35 +1,76 @@
-<main>
-    <div class="operating-system">
-        <h2>Linux - Kubuntu</h2>
-        <div class="desktopEnvironment">
-            <div>
-                <img src="https://kubuntu.org/wp-content/uploads/2022/04/95a8/Kubuntu2204.png" alt="" />
+<main *ngIf="!isLoading">
+    <ng-container *ngIf="!showEditMode">
+        <div class="operating-system">
+            <h2>{{systemDetails.name}}</h2>
+            <div class="desktopEnvironment">
+                <div>
+                    <img src="{{systemDetails.environment.image}}" alt="" />
+                </div>
+                <div>
+                    <h3>{{systemDetails.environment.name}}</h3>
+                    <p>{{systemDetails.environment.description}}</p>
+                </div>
             </div>
-            <div>
-                <h3>KDE Plasma</h3>
-                <p>KDE Plasma is a beautiful desktop environment</p>
+            <div class="distibution">
+                <div>
+                    <img src="{{systemDetails.distribution.image}}" alt="" />
+                </div>
+                <div>
+                    <h3>{{systemDetails.distribution.name}}</h3>
+                    <p>{{systemDetails.distribution.description}}</p>
+                </div>
+            </div>
+            <div class="publisher">
+                <p>publisher {{systemDetails.publisher.name}}</p>
+                <div *ngIf="systemDetails.isPublisher">
+                    <button class="edit-button" (click)="onToggle()">edit System</button>
+                    <button>delete System</button>
+                </div>
             </div>
         </div>
-        <div class="distibution">
-            <div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/512px-UbuntuCoF.svg.png" alt="" />
+        <div class="people-opinion">
+            <div class="commentaries">
+                <div class="user-commentar">
+                    <h4 class="user-name">Peter</h4>
+                    <p>KDE is the best I love it and use it every day!</p>
+                </div>
             </div>
-            <div>
-                <h3>Ubuntu</h3>
-                <p>For me Ubuntu is proper way to move form Windows to Linux. I liked it because have drivers for nVidia,
-                    programs for developing JavaScript application and could run games.</p>
-            </div>
-        </div>
-    </div>
-    <div class="people-opinion">
-        <div class="commentaries">
-            <div class="user-commentar">
-                <h4 class="user-name">Peter</h4>
-                <p>KDE is the best I love it and use it every day!</p>
+            <div class="average-parameters">
+    
             </div>
         </div>
-        <div class="average-parameters">
+    </ng-container>
 
-        </div>
-    </div>
+    <ng-container *ngIf="showEditMode">
+        <form [formGroup]="formDetails" (ngSubmit)="saveDetails(systemDetails._id)">
+            <div class="operating-system">
+                <input class="headline" type="text" name="name" formControlName="name" 
+                    [value]="systemDetails.name"/>
+                <div class="desktopEnvironment">
+                    <div class="select">
+                        <span>Desktop environment</span>                       
+                        <select formControlName="environment">
+                            <option *ngFor="let environment of environmentsAll" [ngValue]="environment._id">{{environment.name}}</option>            
+                        </select>
+                    </div>
+                </div>
+                <div class="distibution">
+                    <div class="select">
+                        <span>Distribution</span>
+                        <select formControlName="distribution">
+                            <option *ngFor="let distribution of distributionsAll" [ngValue]="distribution._id">{{distribution.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="publisher">
+                    <p>publisher {{systemDetails.publisher.name}}</p>
+                    <div *ngIf="systemDetails.isPublisher">
+                        <button class="save-button" type="submit">save System</button>
+                        <button class="edit-button" (click)="onToggle()">cancel Edit</button>
+                        <button>delete System</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-container>
 </main>

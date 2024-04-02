@@ -1,5 +1,6 @@
-.form {
-    text-align: center;
+form {
+    text-align: left;
+    margin-left: 25%;
 }
 
 h2 {
@@ -9,6 +10,8 @@ h2 {
 label,
 .select span {
     margin-right: 1%;
+    width: 290px;
+    display: inline-block;
 }
 
 .environmentName,
@@ -18,7 +21,7 @@ label,
     margin: 1%;
 }
 
-.environmentName input{
+.environmentName input {
     width: 20%;
 }
 

@@ -30,4 +30,15 @@ distributionController.post('/add', isAuthenticated, async (request, response) =
     }
 });
 
+distributionController.get('/:distributionId/details', async (request, response) => {
+    const distributionDetails = await distributionService.getOne(request.params.distributionId).lean();
+    const distributionPublisherId = distributionDetails.publisher.toString();
+
+    const isPublisher = distributionPublisherId && distributionPublisherId == request.user?._id;
+
+    request.distributionCurrent = distributionDetails;
+    
+    response.json({ ...distributionDetails, isPublisher});
+});
+
 module.exports = distributionController;

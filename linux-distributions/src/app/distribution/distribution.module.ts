@@ -7,7 +7,6 @@ import { DistributionDetailsComponent } from './distribution-details/distributio
 import { DistributionAllComponent } from './distribution-all/distribution-all.component';
 
 
-
 @NgModule({
   declarations: [
     DistributionAddComponent,

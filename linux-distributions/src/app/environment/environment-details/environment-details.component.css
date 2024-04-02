@@ -1,0 +1,41 @@
+.operating-system {
+    margin: 2%;
+    border: 3px solid gray;
+    border-radius: 10px;
+    padding: 1%;
+    text-align: center;
+}
+
+.desktopEnvironment {
+    display: flex;
+    padding: 3%;
+    background: #beecff;
+    border-radius: 10px;
+    margin-bottom: 2%;
+}
+
+.desktopEnvironment img {
+    margin-right: 1em;
+    margin-bottom: 1em;
+    max-width: 450px;
+}
+
+.commentaries {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.publisher,
+.publisher p{
+    text-align: right;
+}
+
+.headline {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.edit-button{
+    margin: 0 2% 0 2%;
+}

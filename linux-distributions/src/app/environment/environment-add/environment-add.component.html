@@ -1,5 +1,5 @@
 <h2>add Desktop Environment</h2>
-<form #environmentAddForm="ngForm" (ngSubmit)="addEnvironment(environmentAddForm)" class="form">
+<form #environmentAddForm="ngForm" (ngSubmit)="addEnvironment(environmentAddForm)">
     <div class="environmentName">
         <ng-container *ngIf="inputEnvironmentName.touched">
             <p class="error" *ngIf="inputEnvironmentName?.errors?.['required']">

@@ -1,20 +1,42 @@
-.all-systems {
+h2 {
+    text-align: center;
+}
+
+ul {
     list-style-type: none;
 }
 
-.operating-system {
+li {
+    display: inline-block;
     margin: 2%;
+    height: 400px;
+
+}
+
+img {
+    max-width: 320px;
+    padding: 15px;
+}
+
+a {
     border: 3px solid gray;
     border-radius: 10px;
-    padding: 1%;
+    /* padding: 4%; */
     text-align: center;
-    max-width: 200px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: black;
 }
 
-.operating-system img{
-    max-width: 200px;
+a:hover {
+    background-color: #769bb6;
 }
 
-li{
-    display: inline-block;
+.add {
+    max-width: 80%;
+    text-align: center;
+    align-content: center;
+    margin: 0 9%;
 }

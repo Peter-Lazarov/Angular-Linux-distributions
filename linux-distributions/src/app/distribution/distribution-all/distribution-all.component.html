@@ -1,22 +1,19 @@
 <main>
-    <h2>All desktop distributions reviewed in site</h2>
+    <h2>All distributions reviewed in site</h2>
+    <a routerLink="/distribution/add" class="add">add Distribution</a>
 
     <ul *ngIf="distributionsAll.length > 0">
         <li *ngFor="let distribution of distributionsAll">
-            <a class="details" href="/distribution/this._id"><img src="{{distribution.image}}"/>
-            <h3>{{distribution.name}}</h3>
-            <p>{{distribution.description}}</p>
-            Details</a>
-        </li><li class="add">
-            <a href="/distribution/add">
-                <h3>add distribution</h3>
-                <p>you have Idea about distribution</p>
+            <a class="details" routerLink="/distribution/{{distribution._id}}/details">
+                <img src="{{distribution.image}}" />
+                <h3>{{distribution.name}}</h3>
+                <span>Details</span>
             </a>
         </li>
     </ul>
-    
+
     <div id="no-distribution" *ngIf="distributionsAll.length == 0">
         <h2>There are no distributions</h2>
     </div>
-   
+
 </main>

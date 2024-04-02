@@ -8,7 +8,7 @@ import { EnvironmentAllComponent } from "./environment-all/environment-all.compo
 const routes: Routes = [
     { path: '', component: EnvironmentAllComponent },
     { path: 'add', component: EnvironmentAddComponent },
-    { path: ':id', component: EnvironmentDetailsComponent },
+    { path: ':id/details', component: EnvironmentDetailsComponent },
 ];
 
 @NgModule({

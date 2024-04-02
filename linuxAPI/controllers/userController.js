@@ -93,6 +93,25 @@ userController.get('/profile', async (request, response) => {
     }
 });
 
+userController.get('/:userId/name', async (request, response) => {
+    try {
+        const userId = request.params.userId;
+        const { name } = await userService.getUserName(userId);
+
+        response.json(name);
+    } catch (error) {
+        console.error(error);
+
+        const errorMessage = error.message;
+
+        if (error.name === 'ValidationError') {
+            response.status(400).json({ error: errorMessage });
+        } else {
+            response.status(500).json({ error: errorMessage });
+        }
+    }
+});
+
 // userController.put('/profile', isAuthenticated, editProfileInfo);
 
 

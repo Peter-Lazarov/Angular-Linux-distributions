@@ -7,7 +7,7 @@ import { SystemDetailsComponent } from "./system-details/system-details.componen
 const routes: Routes = [
     { path: '', component: SystemAllComponent },
     { path: 'add', component: SystemAddComponent },
-    { path: ':id', component: SystemDetailsComponent },
+    { path: ':id/details', component: SystemDetailsComponent },
 ];
 
 @NgModule({

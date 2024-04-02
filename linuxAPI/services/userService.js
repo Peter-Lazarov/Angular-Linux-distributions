@@ -60,6 +60,15 @@ exports.profileSearch = async (userObject) => {
     }
 };
 
+exports.getUserName = async (userId) => {
+    try {
+        const user = await User.findById(userId);
+        return user ? { name: user.name } : null;
+    } catch (error) {
+        throw error;
+    }
+};
+
 function generateToken(userObject){
     const payload = {
         _id: userObject._id,

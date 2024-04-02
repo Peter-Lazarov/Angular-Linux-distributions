@@ -12,3 +12,4 @@ exports.create = async (userId, distributionData) => {
 
     return createdDistribution;
 }
+exports.getOne = (distributionId) => Distribution.findById(distributionId);

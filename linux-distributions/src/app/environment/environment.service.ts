@@ -16,4 +16,8 @@ export class EnvironmentService {
   writeEnvironment(name: string, description: string, image: string) {
     return this.http.post<DesktopEnvironment>(`/api/environment/add`, { name, description, image });
   }
+
+  getEnvironmentOne(environmentId: string) {
+    return this.http.get<DesktopEnvironment>(`/api/environment/${environmentId}/details`);
+  }
 }

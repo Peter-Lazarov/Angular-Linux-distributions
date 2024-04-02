@@ -1,18 +1,21 @@
 <main>
-    <h2>All Linux distributions reviewed in site</h2>
+    <h2>All Linux operating systems reviewed in site</h2>
+    <a routerLink="/system/add" class="add">add System</a>
 
     <!-- {{#if stonesAll}} -->
-    <ul class="all-systems" *ngIf="systemsAll.length > 0">
-    <!-- {{#each stonesAll}} -->
+    <ul *ngIf="systemsAll.length > 0">
+        <!-- {{#each stonesAll}} -->
         <li *ngFor="let system of systemsAll" class="operating-system">
-            <img src="{{system.environment.image}}"/>
-            <h3>{{system.name}}</h3>
-            <p>{{system.environment.name}}</p>
-            <p>{{system.distribution.name}}</p>
-            <a class="details-button" href="/system/this._id">Details</a>
+            <a href="/system/{{system._id}}/details">
+                <img src="{{system.environment.image}}" />
+                <h3>{{system.name}}</h3>
+                <p>{{system.environment.name}}</p>
+                <p>{{system.distribution.name}}</p>
+                <span>Details</span>
+            </a>
         </li>
     </ul>
-    
+
     <!-- if there are no distributions -->
     <div id="no-system" *ngIf="systemsAll.length == 0">
         <h2>There are no distributions</h2>

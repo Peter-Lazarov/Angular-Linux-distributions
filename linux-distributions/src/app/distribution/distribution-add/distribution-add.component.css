@@ -1,5 +1,6 @@
-.form {
-    text-align: center;
+form {
+    text-align: left;
+    margin-left: 25%;
 }
 
 h2 {
@@ -9,6 +10,8 @@ h2 {
 label,
 .select span {
     margin-right: 1%;
+    width: 240px;
+    display: inline-block;
 }
 
 .distributionName,

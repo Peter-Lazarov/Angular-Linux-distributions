@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 //import { apiObject } from '../../environments/variables';
 
 @Injectable({
@@ -62,5 +62,9 @@ export class UserService implements OnDestroy{
     return this.http.put<User>('/api/user/profile', {
       email, name
     }).pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  getUserName(userId: string): Observable<string> {
+    return this.http.get<string>(`/api/user/${userId}/name`);
   }
 }

@@ -13,15 +13,15 @@ systemController.get('/', async (request, response) => {
 });
 
 systemController.get('/:systemId/details', async (request, response) => {
-    const systemDetails = await systemService.getOneWithOwnerAndLikes(request.params.systemId).lean();
-    const systemPublisherId = systemDetails.owner._id.toString();
+    const systemDetails = await systemService.getOneWithCommentariesAndPublisher(request.params.systemId).lean();
+    const systemPublisherId = systemDetails.publisher._id.toString();
 
-    //const isOwner = systemPublisherId && systemPublisherId == request.user?._id; //optional chaining if there is no ? and the value is undefined it will crash
+    const isPublisher = systemPublisherId && systemPublisherId == request.user?._id; //optional chaining if there is no ? and the value is undefined it will crash
     //const isLiked = systemDetails.likedList.some(user => user._id.toString() == request.user?._id);
 
     request.systemCurrent = systemDetails;
-
-    //response.render('systems/details', { ...systemDetails, isOwner, isLiked });
+    
+    response.json({ ...systemDetails, isPublisher});
 });
 
 systemController.post('/add', userMiddleware.attachUserInRequest, userMiddleware.isAuthenticated, async (request, response) => {
@@ -45,12 +45,38 @@ systemController.post('/add', userMiddleware.attachUserInRequest, userMiddleware
     }
 });
 
+systemController.put('/:systemId/update', userMiddleware.attachUserInRequest, userMiddleware.isAuthenticated, async (request, response) => {
+    //console.log('request.params.systemId ' + request.params.systemId);
+    if (isSystemPublisher(request.params.systemId, request.user?._id)) {
+        const courseEditForm = request.body;
 
-async function isSystemOwner(systemId, userId) {
-    const system = await systemService.getOne(systemId).lean();
-    const ownerId = system.owner.toString();
+        try {
+            await systemService.edit(request.params.systemId, courseEditForm);
+            //response.redirect(`/system/${request.params.systemId}/details`);
+            //response.json(systemCreated);
+        } catch (error) {
+            console.error(error);
+    
+            const errorMessage = getErrorMessage(error);
+    
+            if (error.name === 'ValidationError') {
+                response.status(400).json({ error: errorMessage });
+            } else {
+                response.status(500).json({ error: errorMessage });
+            }
+        }
+    } else {
+        response.redirect('/system');
+    }
+});
 
-    if (ownerId && ownerId == userId) {
+
+async function isSystemPublisher(systemId, userId) {
+    const system = await systemService.getOneWithCommentariesAndPublisher(systemId).lean();
+    //console.log(system);
+    const publisherId = system.publisher.toString();
+
+    if (publisherId && publisherId == userId) {
         return true;
     }
     return false;
