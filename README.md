@@ -19,10 +19,10 @@ The site is some kind of catalog for different Linux distributions.
 - Commentary - for the systems
 
 My work covers all project
-Front End - Angular
+### Front End - Angular
 - looking at workshop from course and implementing functionality for my purpose 
 - searching for new thing in google and ask copilot
-Back End - Node.js
+### Back End - Node.js
 - using server from examination of backend course, transforming and adding needed functionality
-HTML and CSS
+### HTML and CSS
 - all HTML and CSS are written by me, in past I was made 5-6 sites for clients
