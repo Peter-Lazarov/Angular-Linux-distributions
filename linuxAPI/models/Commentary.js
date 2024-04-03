@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
 const commentarySchema = new mongoose.Schema({
-    title: {
-        type: String,
-        minlength: 2,
-        required: true
-    },
     content:{
         type: String,
         minlength: 5,
         required: true
+    },
+    systemId:{
+        type: mongoose.Types.ObjectId,
+        ref: 'System'
     },
     userId: {
         type: mongoose.Types.ObjectId,

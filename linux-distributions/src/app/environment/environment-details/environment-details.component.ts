@@ -37,4 +37,6 @@ export class EnvironmentDetailsComponent {
   ngOnInit() {
     this.loadEnvironment();
   }
+
+  //implement isLogged for delete
 }

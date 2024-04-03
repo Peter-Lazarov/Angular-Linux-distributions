@@ -17,12 +17,9 @@ exports.create = async (userId, systemData) => {
 
 exports.getOneWithCommentariesAndPublisher = (systemId) => System.findById(systemId).populate('environment').populate('distribution').populate('commentary').populate('publisher');
 exports.edit = (systemId, systemData) => System.findByIdAndUpdate(systemId, systemData, { runValidators: true });
+exports.delete = async (systemId, userId) => {
+    const systemDeleted = await System.findOneAndDelete({ _id: systemId, publisher: userId });
+    await User.findOneAndUpdate({ _id: userId}, { $pull: { publishedSystems: systemId }});
 
-// exports.like = async (distributionId, userId) => {
-//     await Distribution.findByIdAndUpdate(distributionId, { $push: { likedList: userId } });
-//     await User.findByIdAndUpdate(userId, { $push: { likedStones: distributionId } });
-// };
-// exports.delete = (distributionId) => Distribution.findByIdAndDelete(distributionId);
-// exports.edit = (distributionId, distributionData) => Distribution.findByIdAndUpdate(distributionId, distributionData, { runValidators: true });
-// exports.getOne = (distributionId) => Distribution.findById(distributionId);
-// exports.getLastThree = () => Distribution.find().sort({createdAt: -1}).limit(3);
+    return systemDeleted;
+}

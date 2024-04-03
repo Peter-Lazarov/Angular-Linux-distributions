@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { OperatingSystem, OperatingSystemWithCommentariesAndPublisher } from '../types/operating-system';
+import { Commentary, CommentaryForShow } from '../types/commentary';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,17 @@ export class SystemService {
     })
   }
 
+  addCommentary(content: string, systemId: string, userId: string | undefined) {
+    return this.http.post<Commentary>(`/api/commentary/${systemId}/add`, {
+      content, systemId, userId
+    })
+  }
+  
+  getCommentaryAll(systemId: string){   
+    return this.http.get<CommentaryForShow[]>(`/api/commentary/${systemId}`);
+  }
+
+  deleteSystem(systemId: string){
+    return this.http.delete<OperatingSystem>(`/api/system/${systemId}/delete`);
+  }
 }

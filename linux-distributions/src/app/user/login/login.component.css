@@ -1,0 +1,10 @@
+fieldset{
+    text-align: center;
+    /* text-align: right; */
+    /* margin-right: 45%; */
+    border: none;
+}
+
+label{
+    margin-right: 2%;
+}

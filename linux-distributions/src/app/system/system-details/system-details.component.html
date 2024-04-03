@@ -24,19 +24,23 @@
                 <p>publisher {{systemDetails.publisher.name}}</p>
                 <div *ngIf="systemDetails.isPublisher">
                     <button class="edit-button" (click)="onToggle()">edit System</button>
-                    <button>delete System</button>
+                    <button class="delete" type="button" (click)="deleteCurrentSystem(systemDetails._id)">delete System</button>
                 </div>
             </div>
         </div>
         <div class="people-opinion">
-            <div class="commentaries">
-                <div class="user-commentar">
-                    <h4 class="user-name">Peter</h4>
-                    <p>KDE is the best I love it and use it every day!</p>
-                </div>
+            <div class="add-comment" *ngIf="isLogged">
+                <form [formGroup]="commentaryForm" (ngSubmit)="addComment(systemDetails._id, userId)">
+                    <input type="text" formControlName="content" placeholder="Add a comment">
+                    <button type="submit">Post</button>
+                </form>
             </div>
-            <div class="average-parameters">
-    
+            <div class="commentaries">
+                <p>Commentaries of users</p>
+                <div *ngFor="let commentary of commentaryAll" class="user-commentar">
+                    <h4 class="user-name">{{commentary.userId.name}}</h4>
+                    <p>{{commentary.content}}</p>
+                </div>
             </div>
         </div>
     </ng-container>
@@ -67,7 +71,6 @@
                     <div *ngIf="systemDetails.isPublisher">
                         <button class="save-button" type="submit">save System</button>
                         <button class="edit-button" (click)="onToggle()">cancel Edit</button>
-                        <button>delete System</button>
                     </div>
                 </div>
             </div>

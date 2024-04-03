@@ -1,11 +1,38 @@
-footer{
+footer {
     background-color: #495e8d;
-    justify-content: space-between;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 400;
+    width: 100%;
+    bottom: 0;
+    padding: 37px 0;
+}
+
+div{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.links{
+    margin-left: 6%;
+    width: 19%;
+}
+.information{
+    width: 45%;
+}
+.contacts {
+    width: 20%;
+}
+
+footer a {
+    display: block;
+    color: rgb(202, 203, 204);
 }
 
 footer a:hover {
     color: rgb(202, 203, 204);
+}
+
+p{
+    margin: 0;
 }

@@ -3,10 +3,11 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1em;
-    background: #124E78;
+    background-color: #495e8d;
 }
 
 nav {
+    margin-left: 15%;
     display: flex;
     justify-content: space-between;
     color: white;

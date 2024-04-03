@@ -12,12 +12,14 @@ import { AppInterceptorProvider } from './app.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorComponent,
-    AuthenticateComponent
+    AuthenticateComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

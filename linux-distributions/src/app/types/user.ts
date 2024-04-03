@@ -19,3 +19,8 @@ export interface UserAsPublisher {
     publishedCommentary: string[],
     updatedAt: string
 }
+
+export interface UserForCommentary {
+    _id: string,
+    name: string,
+}

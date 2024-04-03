@@ -6,7 +6,7 @@
     <ul *ngIf="systemsAll.length > 0">
         <!-- {{#each stonesAll}} -->
         <li *ngFor="let system of systemsAll" class="operating-system">
-            <a href="/system/{{system._id}}/details">
+            <a routerLink="/system/{{system._id}}/details">
                 <img src="{{system.environment.image}}" />
                 <h3>{{system.name}}</h3>
                 <p>{{system.environment.name}}</p>

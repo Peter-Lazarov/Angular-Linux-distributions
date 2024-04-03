@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const homeController = require('./controllers/homeController');
 const userController = require('./controllers/userController');
-const stoneController = require('./controllers/stoneController');
+const commentaryController = require('./controllers/commentaryController');
 
 const systemController = require('./controllers/systemController');
 const distributionController = require('./controllers/distributionController');
@@ -12,9 +12,8 @@ const environmentController = require('./controllers/environmentController');
 router.use('/system', systemController);
 router.use('/distribution', distributionController);
 router.use('/environment', environmentController);
-
+router.use('/commentary', commentaryController);
 router.use('/user', userController);
-router.use('/stones', stoneController);
 
 router.all('*', (request, response) => {
     response.render('404');

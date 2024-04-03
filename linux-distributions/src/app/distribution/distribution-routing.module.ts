@@ -3,11 +3,12 @@ import { RouterModule, Routes } from "@angular/router";
 import { DistributionAddComponent } from "./distribution-add/distribution-add.component";
 import { DistributionDetailsComponent } from "./distribution-details/distribution-details.component";
 import { DistributionAllComponent } from "./distribution-all/distribution-all.component";
+import { AuthenticationActivate } from "../guards/authentication.activate";
 
 
 const routes: Routes = [
     { path: '', component: DistributionAllComponent},
-    { path: 'add', component: DistributionAddComponent },
+    { path: 'add', component: DistributionAddComponent, canActivate: [AuthenticationActivate] },
     { path: ':id/details', component: DistributionDetailsComponent },
 ];
 

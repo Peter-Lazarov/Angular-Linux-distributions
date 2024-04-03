@@ -53,3 +53,17 @@
 .edit-button{
     margin: 0 2% 0 2%;
 }
+
+.add-comment form{
+    text-align: center;
+}
+
+.user-commentar{
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+
+.user-commentar h4,
+.user-commentar p{
+    margin-left: 10%;
+}

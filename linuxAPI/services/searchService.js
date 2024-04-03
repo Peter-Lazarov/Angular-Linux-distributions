@@ -1,14 +1,14 @@
-const Stone = require('../models/Stone');
+// const Stone = require('../models/Stone');
 
 
-async function searchFromDatabase(name){
-    let query = {};
+// async function searchFromDatabase(name){
+//     let query = {};
 
-    if(name){
-        query.name = new RegExp(name, 'i');
-    }
+//     if(name){
+//         query.name = new RegExp(name, 'i');
+//     }
 
-    return Stone.find(query).lean();
-};
+//     return Stone.find(query).lean();
+// };
 
-exports.searchFromDatabase = searchFromDatabase;
+// exports.searchFromDatabase = searchFromDatabase;

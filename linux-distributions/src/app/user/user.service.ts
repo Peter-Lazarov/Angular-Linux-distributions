@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 })
 export class UserService implements OnDestroy{
   private user$$ = new BehaviorSubject<User | undefined>(undefined);
-  private user$ = this.user$$.asObservable();
+  //private user$ = this.user$$.asObservable();
 
   //user = {} as User;
   user: User | undefined;
@@ -17,7 +17,7 @@ export class UserService implements OnDestroy{
   //apiUrlUser = apiObject.apiUrl + '/user';
 
   get isLogged(): boolean {
-    //console.log(!!this.user);
+    //console.log('user service !!this.user ' + !!this.user);
     
     return !!this.user;
   }
@@ -30,6 +30,10 @@ export class UserService implements OnDestroy{
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
+  }
+
+  get user$(): Observable<User | undefined> {
+    return this.user$$.asObservable();
   }
 
   login(email: string, password: string) {

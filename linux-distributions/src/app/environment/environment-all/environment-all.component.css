@@ -10,7 +10,7 @@ li {
     display: inline-block;
     margin: 2%;
     height: 350px;
-
+    vertical-align: top;
 }
 
 img {
