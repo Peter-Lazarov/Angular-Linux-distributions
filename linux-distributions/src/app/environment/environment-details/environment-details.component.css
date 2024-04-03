@@ -1,12 +1,8 @@
-.operating-system {
-    margin: 2%;
-    border: 3px solid gray;
-    border-radius: 10px;
-    padding: 1%;
-    text-align: center;
+.desktopEnvironment {
+    margin: 3%;
 }
 
-.desktopEnvironment {
+.information{
     display: flex;
     padding: 3%;
     background: #beecff;

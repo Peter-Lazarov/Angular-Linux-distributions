@@ -1,3 +1,7 @@
+main{
+    margin: 2%;
+}
+
 h2 {
     text-align: center;
 }
@@ -39,4 +43,8 @@ a:hover {
     text-align: center;
     align-content: center;
     margin: 0 9%;
+}
+
+#no-system{
+    min-height: 400px;
 }

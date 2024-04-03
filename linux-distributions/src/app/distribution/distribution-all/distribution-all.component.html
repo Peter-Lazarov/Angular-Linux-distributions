@@ -1,5 +1,5 @@
 <main>
-    <h2>All distributions reviewed in site</h2>
+    <h2 *ngIf="distributionsAll.length > 0">All distributions reviewed in site</h2>
     <a routerLink="/distribution/add" class="add">add Distribution</a>
 
     <ul *ngIf="distributionsAll.length > 0">

@@ -1,35 +1,39 @@
-<h2>add Distribution</h2>
-<form #distributionAddForm="ngForm" (ngSubmit)="addDistribution(distributionAddForm)">
-    <div class="distributionName">
-        <ng-container *ngIf="inputDistributionName.touched">
-            <p class="error" *ngIf="inputDistributionName?.errors?.['required']">
-                Distribution must have name.
-            </p>
-            <p class="error" *ngIf="inputDistributionName?.errors?.['minlength']">
-                The name must be more than 1 character.
-            </p>
-        </ng-container>
-        <label for="name">Distribution name</label>
-        <input type="text" name="name" #inputDistributionName="ngModel" ngModel required minlength="2">
-    </div>
-    
-    <div class="distributionDescription">
-        <ng-container *ngIf="textareaDistributionDescription.touched">
-            <p class="error" *ngIf="textareaDistributionDescription?.errors?.['required']">
-                Information about distribution is required.
-            </p>
-            <p class="error" *ngIf="textareaDistributionDescription?.errors?.['minlength']">
-                Atleast 10 characters.
-            </p>
-        </ng-container>
-        <label for="description">Distribution description</label>
-        <textarea type="text" name="description" #textareaDistributionDescription="ngModel" ngModel required minlength="10" rows="3"></textarea>
-    </div>
-    
-    <div class="distributionImage">
-        <label for="image">Distribution image link</label>
-        <input type="text" name="image" #inputDistributionImage="ngModel" ngModel>
-    </div>
+<main>
+    <h2>add Distribution</h2>
+    <form #distributionAddForm="ngForm" (ngSubmit)="addDistribution(distributionAddForm)">
+        <div class="distributionName">
+            <ng-container *ngIf="inputDistributionName.touched">
+                <p class="error" *ngIf="inputDistributionName?.errors?.['required']">
+                    Distribution must have name.
+                </p>
+                <p class="error" *ngIf="inputDistributionName?.errors?.['minlength']">
+                    The name must be more than 1 character.
+                </p>
+            </ng-container>
+            <label for="name">Distribution name</label>
+            <input type="text" name="name" #inputDistributionName="ngModel" ngModel required minlength="2">
+        </div>
 
-    <button>add Distribution</button>
-</form>
+        <div class="distributionDescription">
+            <ng-container *ngIf="textareaDistributionDescription.touched">
+                <p class="error" *ngIf="textareaDistributionDescription?.errors?.['required']">
+                    Information about distribution is required.
+                </p>
+                <p class="error" *ngIf="textareaDistributionDescription?.errors?.['minlength']">
+                    Atleast 10 characters.
+                </p>
+            </ng-container>
+            <label for="description">Distribution description</label>
+            <textarea type="text" name="description" #textareaDistributionDescription="ngModel" ngModel required
+                minlength="10" rows="3"></textarea>
+        </div>
+
+        <div class="distributionImage">
+            <label for="image">Distribution image link</label>
+            <input type="text" name="image" #inputDistributionImage="ngModel" ngModel>
+        </div>
+
+        <button>add Distribution</button>
+    </form>
+
+</main>

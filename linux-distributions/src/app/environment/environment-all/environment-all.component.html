@@ -1,5 +1,5 @@
 <main>
-    <h2>All desktop environments</h2>
+    <h2 *ngIf="environmentsAll.length > 0">All desktop environments</h2>
     <a routerLink="/environment/add" class="add">add new Desktop Environment</a>
 
     <ul *ngIf="environmentsAll.length > 0">

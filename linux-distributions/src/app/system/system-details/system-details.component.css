@@ -50,20 +50,35 @@
     text-align: center;
 }
 
-.edit-button{
+.edit-button {
     margin: 0 2% 0 2%;
 }
 
-.add-comment form{
+.add-comment form {
     text-align: center;
 }
 
-.user-commentar{
+.add-comment button {
+    height: 56px;
+    vertical-align: top;
+    margin-left: 1%;
+}
+
+.user-commentar {
     border: 2px solid gray;
     border-radius: 10px;
 }
 
 .user-commentar h4,
-.user-commentar p{
-    margin-left: 10%;
+.user-commentar p {
+    margin-left: 7%;
+}
+
+.add-comment textarea {
+    width: 56%;
+    height: 47px;
+}
+
+.people-opinion {
+    margin: 2% 0;
 }

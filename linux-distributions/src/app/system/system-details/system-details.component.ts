@@ -53,14 +53,20 @@ export class SystemDetailsComponent implements OnInit {
     this.activeRoute.params.subscribe((data) => {
       const systemId = data['id'];
       //console.log('systemId ' + systemId);
+      
+ 
 
       this.systemService.getSystemOne(systemId).subscribe((system) => {
         this.systemDetails = system;
+        
         this.isLoading = false;
-
-        //console.log(this.systemDetails);
-        //console.log(this.systemDetails.isPublisher);
       })
+      
+      this.systemService.getCommentaryAll(systemId).subscribe((commentary) => {
+        this.commentaryAll = commentary;
+      });
+  
+
     });
   }
 
@@ -70,10 +76,6 @@ export class SystemDetailsComponent implements OnInit {
       this.userId = user?._id;
     });
     this.loadSystem();
-
-    this.systemService.getCommentaryAll(this.systemDetails._id).subscribe((commentary) => {
-      this.commentaryAll = commentary;
-    });
   }
 
   loadForm() {
@@ -107,7 +109,7 @@ export class SystemDetailsComponent implements OnInit {
   onToggle(): void {
     if (this.isLogged) {
       this.formDetails = this.formBuilder.group({
-        name: ['', [Validators.required, Validators.minLength(2)]],
+        name: [''],
         environment: [''],
         distribution: ['']
       });
@@ -141,6 +143,7 @@ export class SystemDetailsComponent implements OnInit {
 
       this.commentar = this.commentaryForm.value as Commentary;
       const { content } = this.commentar;
+      this.commentaryForm.reset();
 
       this.systemService.addCommentary(content, systemId, userId).subscribe(() => {
         //this.onToggle();

@@ -13,7 +13,8 @@ userController.post('/register', async (request, response) => {
         const { _id, email, name, token } = await userService.register(userData);
 
         //response.cookie(authorisation, token, { httpOnly: true, sameSite: 'none', secure: true })
-        response.cookie(authorisationCookie, token, { httpOnly: true, sameSite: 'none', secure: false });
+        //response.cookie(authorisationCookie, token, { httpOnly: true, sameSite: 'none', secure: false }); //this is better but require https
+        response.cookie(authorisationCookie, token, { httpOnly: false });
 
         response.json({
             _id,
@@ -41,8 +42,10 @@ userController.post('/login', async (request, response) => {
 
         const { _id, email, token } = await userService.login(userData);
 
-        response.cookie(authorisationCookie, token, { httpOnly: false, sameSite: 'none', secure: false });
+        //response.cookie(authorisationCookie, token, { httpOnly: false, sameSite: 'none', secure: false }); //this is better but require https
         //console.log(authorisationCookie, token);
+
+        response.cookie(authorisationCookie, token, { httpOnly: false});
 
         response.json({
             _id,

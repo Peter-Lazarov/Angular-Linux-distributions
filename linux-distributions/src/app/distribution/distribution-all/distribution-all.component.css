@@ -1,3 +1,7 @@
+main{
+    margin: 2%;
+}
+
 h2 {
     text-align: center;
 }
@@ -31,7 +35,7 @@ a {
 }
 
 a:hover {
-    background-color: rgb(252, 191, 167);
+    background-color: #ffc8a1;
 }
 
 .add {

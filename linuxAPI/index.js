@@ -36,7 +36,7 @@ server.use(attachUserInRequest);
 
 server.use(routes);
 
-mongoose.connect('mongodb://127.0.0.1:27017/linuxDistributions');
+mongoose.connect('mongodb://127.0.0.1:27017/linuxSystems');
 mongoose.connection.on('connected', () => console.log('Database connected'));
 mongoose.connection.on('disconnected', () => console.log('Database disconnected'));
 mongoose.connection.on('error', (error) => console.log(error));

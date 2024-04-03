@@ -1,6 +1,9 @@
+main{
+    margin: 1%;
+}
+
 form {
-    text-align: left;
-    margin-left: 25%;
+   text-align: center;
 }
 
 h2 {
@@ -15,10 +18,11 @@ label,
 }
 
 .distributionName,
-.select,
 .distributionDescription,
 .distributionImage {
     margin: 1%;
+    text-align: left;
+    margin-left: 25%;
 }
 
 .distributionName input{

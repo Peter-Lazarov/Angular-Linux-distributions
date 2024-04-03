@@ -1,9 +1,9 @@
 <main>
-    <h2>All Linux operating systems reviewed in site</h2>
-    <a routerLink="/system/add" class="add">add System</a>
+    <h2 *ngIf="systemsCount > 0">All Linux operating systems reviewed in site</h2>
+    <a *ngIf="isLogged" routerLink="/system/add" class="add">add System</a>
 
     <!-- {{#if stonesAll}} -->
-    <ul *ngIf="systemsAll.length > 0">
+    <ul *ngIf="systemsCount > 0">
         <!-- {{#each stonesAll}} -->
         <li *ngFor="let system of systemsAll" class="operating-system">
             <a routerLink="/system/{{system._id}}/details">
@@ -17,7 +17,7 @@
     </ul>
 
     <!-- if there are no distributions -->
-    <div id="no-system" *ngIf="systemsAll.length == 0">
+    <div id="no-system" *ngIf="systemsCount == 0">
         <h2>There are no distributions</h2>
     </div>
 </main>

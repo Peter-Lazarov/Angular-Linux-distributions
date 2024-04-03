@@ -1,13 +1,17 @@
-.distibution {
+.distibution{
+    margin: 3%;
+}
+
+.information {
     display: flex;
     padding: 3%;
     border-radius: 10px;
-    background: #ffb37c;
+    background: #ffc8a1;
 }
 
 .distibution img {
     /* width: 16%; */
-    max-width: 100px;
+    max-width: 300px;
     margin-right: 1em;
     margin-bottom: 1em;
 
