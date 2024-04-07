@@ -24,7 +24,8 @@
     display: flex;
     padding: 3%;
     border-radius: 10px;
-    background: #ffb37c;
+    /* background: #ffb37c; */
+    background: #ffd1d1;
 }
 
 .distibution img {

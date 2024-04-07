@@ -35,7 +35,8 @@ a {
 }
 
 a:hover {
-    background-color: #769bb6;
+    /* background-color: #769bb6; */
+    background-color: #b0dfa9;
 }
 
 .add {

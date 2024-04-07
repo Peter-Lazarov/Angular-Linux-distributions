@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,11 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
+
+import { DatePipe, registerLocaleData } from '@angular/common';
+import localeBg from '@angular/common/locales/bg';
+
+registerLocaleData(localeBg, 'bg');
 
 @NgModule({
   declarations: [
@@ -30,7 +35,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AppInterceptorProvider, CookieService],
-  bootstrap: [AppComponent]
+  providers: [AppInterceptorProvider, CookieService, DatePipe, { provide: LOCALE_ID, useValue: 'bg' }],
+  bootstrap: [AppComponent]  
 })
 export class AppModule { }

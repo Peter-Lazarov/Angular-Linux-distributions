@@ -25,7 +25,6 @@ export class SystemDetailsComponent implements OnInit {
   commentar = {} as Commentary;
   userId: string | undefined = '';
 
-
   formDetails = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
     environment: [''],

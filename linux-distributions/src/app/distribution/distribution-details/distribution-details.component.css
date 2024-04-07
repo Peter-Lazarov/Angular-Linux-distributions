@@ -6,7 +6,8 @@
     display: flex;
     padding: 3%;
     border-radius: 10px;
-    background: #ffc8a1;
+    /* background: #ffc8a1; */
+    background: #ffd1d1;
 }
 
 .distibution img {

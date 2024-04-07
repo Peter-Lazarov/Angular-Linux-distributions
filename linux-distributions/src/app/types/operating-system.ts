@@ -17,6 +17,7 @@ export interface OperatingSystemWithCommentariesAndPublisher {
     distribution: Distribution,
     commentaries: Commentary[],
     publisher: UserAsPublisher,
+    createdAt: Date,
     isPublisher?: boolean
 }
 

@@ -32,10 +32,13 @@ a {
     height: 100%;
     text-decoration: none;
     color: black;
+    background: #eee;
 }
 
 a:hover {
-    background-color: #ffc8a1;
+    /* background-color: #ffc8a1; */
+    /* background-color: #ffaeae; */
+    background-color: #ffd1d1;
 }
 
 .add {

@@ -14,14 +14,27 @@ systemController.get('/', async (request, response) => {
 
 systemController.get('/:systemId/details', async (request, response) => {
     const systemDetails = await systemService.getOneWithCommentariesAndPublisher(request.params.systemId).lean();
-    const systemPublisherId = systemDetails.publisher._id.toString();
+    
+    try {
+        const systemPublisherId = systemDetails.publisher._id.toString();
 
-    const isPublisher = systemPublisherId && systemPublisherId == request.user?._id; //optional chaining if there is no ? and the value is undefined it will crash
-    //const isLiked = systemDetails.likedList.some(user => user._id.toString() == request.user?._id);
+        const isPublisher = systemPublisherId && systemPublisherId == request.user?._id; //optional chaining if there is no ? and the value is undefined it will crash
+        //const isLiked = systemDetails.likedList.some(user => user._id.toString() == request.user?._id);
 
-    request.systemCurrent = systemDetails;
+        request.systemCurrent = systemDetails;
 
-    response.json({ ...systemDetails, isPublisher });
+        response.json({ ...systemDetails, isPublisher });
+    } catch (error) {
+        console.error(error);
+
+        const errorMessage = getErrorMessage(error);
+
+        if (error.name === 'ValidationError') {
+            response.status(400).json({ error: errorMessage });
+        } else {
+            response.status(500).json({ error: errorMessage });
+        }
+    }
 });
 
 systemController.post('/add', userMiddleware.attachUserInRequest, userMiddleware.isAuthenticated, async (request, response) => {
@@ -88,7 +101,7 @@ systemController.delete('/:systemId/delete', userMiddleware.attachUserInRequest,
                 response.status(500).json({ error: errorMessage });
             }
         }
-    }else {
+    } else {
         response.status(403).json({ error: "User is not the publisher of the system." });
     }
 });

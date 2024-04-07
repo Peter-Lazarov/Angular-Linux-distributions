@@ -21,6 +21,7 @@
                 </div>
             </div>
             <div class="publisher">
+                <p>{{systemDetails.createdAt | timeAgo }}</p>
                 <p>publisher {{systemDetails.publisher.name}}</p>
                 <div *ngIf="systemDetails.isPublisher">
                     <button class="edit-button" (click)="onToggle()">edit System</button>

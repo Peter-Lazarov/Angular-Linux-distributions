@@ -5,19 +5,24 @@ import { SystemAllComponent } from './system-all/system-all.component';
 import { SystemAddComponent } from './system-add/system-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SystemRoutingModule } from './system-routing.module';
+import { TimeAgoPipe } from '../pipe/date-pipe';
 
 
 @NgModule({
   declarations: [
     SystemDetailsComponent,
     SystemAllComponent,
-    SystemAddComponent
+    SystemAddComponent,
+    TimeAgoPipe
   ],
   imports: [
     CommonModule,
     FormsModule,
     SystemRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  ],
+  exports: [
+    TimeAgoPipe
   ]
 })
 export class SystemModule { }
