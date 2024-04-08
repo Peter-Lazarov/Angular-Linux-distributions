@@ -1,13 +1,13 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, Subscription, catchError, tap, throwError } from 'rxjs';
 //import { apiObject } from '../../environments/variables';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService implements OnDestroy{
+export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<User | undefined>(undefined);
   //private user$ = this.user$$.asObservable();
 
@@ -18,7 +18,7 @@ export class UserService implements OnDestroy{
 
   get isLogged(): boolean {
     //console.log('user service !!this.user ' + !!this.user);
-    
+
     return !!this.user;
   }
 
@@ -41,28 +41,38 @@ export class UserService implements OnDestroy{
     return this.http.post<User>(`/api/user/login`, { email, password })
       .pipe(tap(user => {
         this.user$$.next(user);
-      }));
+      }),
+        catchError(this.handleError)
+      );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    //`Backend returned code ${error.status}, body was: ${error.error}`;
+
+    return throwError(error.error.error);
   }
 
   register(email: string, password: string, rePassword: string, name: string) {
     return this.http.post<User>(`/api/user/register`, { email, password, rePassword, name })
       .pipe(tap(user => {
         this.user$$.next(user);
-      }));
+      }),
+        catchError(this.handleError)
+      );
   }
 
-  logout() {   
+  logout() {
     return this.http.post(`/api/user/logout`, {}).pipe(tap(() => {
       this.user$$.next(undefined);
     }));
   }
 
-  getProfile(){   
+  getProfile() {
     return this.http.get<User>('/api/user/profile')
-    .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  updateProfile(email: string, name: string){
+  updateProfile(email: string, name: string) {
     return this.http.put<User>('/api/user/profile', {
       email, name
     }).pipe(tap((user) => this.user$$.next(user)));

@@ -33,7 +33,7 @@
             </ng-container>
 
             <button [disabled]="form.invalid" [class]="form.invalid ? 'disabled' : ''">Login</button>
-
+            <p class="error-message">{{ errorMessage }}</p>
         </fieldset>
     </form>
 </div>

@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Provider } from "@angular/core";
-import { Observable, catchError } from "rxjs";
+import { Observable, catchError, throwError } from "rxjs";
 import { apiObject } from '../environments/variables';
 import { ErrorService } from "../app/error/error.service";
 import { Router } from "@angular/router";
@@ -26,6 +26,10 @@ class AppInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(catchError((error) => {
+      if (request.url.endsWith('/login') || request.url.endsWith('/register')) {
+        return throwError(error);
+      }
+      
       this.errorService.setError(error);
       //console.log(error);
       

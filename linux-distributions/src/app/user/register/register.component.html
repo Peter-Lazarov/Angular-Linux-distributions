@@ -50,5 +50,7 @@
 
         <button [disabled]="registerForm.invalid" [class]="registerForm.invalid ? 'disabled' : ''">Create
             Account</button>
+
+        <p class="error-message">{{ errorMessage }}</p>
     </fieldset>
 </form>

@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
+  errorMessage = '';
+
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
 
   }
@@ -38,8 +40,13 @@ export class RegisterComponent {
 
     const { email, passwordGroup: { password, rePassword } = {}, name } = this.registerForm.value;
 
-    this.userService.register(email!, password!, rePassword!, name!).subscribe(() => {
-      this.router.navigate(['/user/login'])
+    this.userService.register(email!, password!, rePassword!, name!).subscribe({
+      next: () => {
+        this.router.navigate(['/user/login'])
+      },
+      error: (receivedError) => {
+        this.errorMessage = receivedError
+      }
     });
 
     //console.log(this.registerForm.value);
