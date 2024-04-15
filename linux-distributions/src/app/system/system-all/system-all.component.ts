@@ -10,8 +10,8 @@ import { OperatingSystem } from 'src/app/types/operating-system';
 })
 export class SystemAllComponent implements OnInit{
   systemsAll: OperatingSystem[] = [];
-
   systemsCount: number = 0;
+  isUserLogged = false;
 
   constructor(private userService: UserService, private systemService: SystemService){
     
@@ -21,13 +21,9 @@ export class SystemAllComponent implements OnInit{
     this.systemService.getSystemAll().subscribe((system) => {
       this.systemsAll = system;
       this.systemsCount = system.length;
-      //console.log(this.systemsAll);
-      
+      //console.log(this.systemsAll);      
+      this.isUserLogged = this.userService.isLogged;  
     });
-  }
-
-  get isLogged(): boolean {
-    return this.userService.isLogged;
   }
 
   // get userId(): string {

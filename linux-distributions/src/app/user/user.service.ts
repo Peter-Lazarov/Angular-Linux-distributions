@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { User } from '../types/user';
+import { User, UserForAuthenticated } from '../types/user';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscription, catchError, tap, throwError } from 'rxjs';
 //import { apiObject } from '../../environments/variables';
@@ -7,40 +7,31 @@ import { BehaviorSubject, Observable, Subscription, catchError, tap, throwError 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService implements OnDestroy {
-  private user$$ = new BehaviorSubject<User | undefined>(undefined);
-  //private user$ = this.user$$.asObservable();
+export class UserService {
+  private userSubject$$ = new BehaviorSubject<UserForAuthenticated | undefined>(undefined);
+  //private user$ = this.userSubject$$.asObservable();
 
-  //user = {} as User;
-  user: User | undefined;
-  userSubscription: Subscription;
-  //apiUrlUser = apiObject.apiUrl + '/user';
+  userObject: UserForAuthenticated | undefined;
+  isUserLoaded = false;
+
+  constructor(private http: HttpClient) {
+  }
 
   get isLogged(): boolean {
     //console.log('user service !!this.user ' + !!this.user);
 
-    return !!this.user;
+    return !!this.userSubject$$.value;
   }
 
-  constructor(private http: HttpClient) {
-    this.userSubscription = this.user$.subscribe((user) => {
-      this.user = user;
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
-  }
-
-  get user$(): Observable<User | undefined> {
-    return this.user$$.asObservable();
+  get user$(): Observable<UserForAuthenticated | undefined> {
+    return this.userSubject$$.asObservable();
   }
 
   login(email: string, password: string) {
 
-    return this.http.post<User>(`/api/user/login`, { email, password })
+    return this.http.post<UserForAuthenticated>(`/api/user/login`, { email, password })
       .pipe(tap(user => {
-        this.user$$.next(user);
+        this.userSubject$$.next(user);
       }),
         catchError(this.handleError)
       );
@@ -55,7 +46,7 @@ export class UserService implements OnDestroy {
   register(email: string, password: string, rePassword: string, name: string) {
     return this.http.post<User>(`/api/user/register`, { email, password, rePassword, name })
       .pipe(tap(user => {
-        this.user$$.next(user);
+        this.userSubject$$.next(user);
       }),
         catchError(this.handleError)
       );
@@ -63,19 +54,24 @@ export class UserService implements OnDestroy {
 
   logout() {
     return this.http.post(`/api/user/logout`, {}).pipe(tap(() => {
-      this.user$$.next(undefined);
+      this.userSubject$$.next(undefined);
     }));
   }
 
   getProfile() {
     return this.http.get<User>('/api/user/profile')
-      .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(
+        tap((user) => {
+          this.userSubject$$.next(user)
+          this.isUserLoaded = true;
+        })
+      );
   }
 
   updateProfile(email: string, name: string) {
     return this.http.put<User>('/api/user/profile', {
       email, name
-    }).pipe(tap((user) => this.user$$.next(user)));
+    }).pipe(tap((user) => this.userSubject$$.next(user)));
   }
 
   getUserName(userId: string): Observable<string> {

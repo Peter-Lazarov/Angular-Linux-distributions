@@ -26,6 +26,6 @@ export class EnvironmentAllComponent implements OnInit {
   }
 
   get userId(): string {
-    return this.userService.user?._id || '';
+    return this.userService.userObject?._id || '';
   }
 }

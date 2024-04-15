@@ -11,6 +11,6 @@ export class ProfileComponent {
   constructor(private fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
-    const {email, name} = this.userService.user!;
+    const {email, name} = this.userService.userObject!;
   }
 }

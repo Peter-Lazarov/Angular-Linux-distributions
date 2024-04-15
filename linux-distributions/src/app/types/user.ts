@@ -24,3 +24,9 @@ export interface UserForCommentary {
     _id: string,
     name: string,
 }
+
+export interface UserForAuthenticated {
+    _id: string,
+    email: string,
+    name: string,
+}

@@ -1,6 +1,6 @@
 <main>
     <h2 *ngIf="systemsCount > 0">All Linux operating systems reviewed in site</h2>
-    <a *ngIf="isLogged" routerLink="/system/add" class="add">add System</a>
+    <a *ngIf="isUserLogged" routerLink="/system/add" class="add">add System</a>
 
     <!-- {{#if stonesAll}} -->
     <ul *ngIf="systemsCount > 0">
