@@ -8,13 +8,13 @@ The Angular site implement many of the learned technologies.
 - Routing mechanics - for navigate thru the site
 - User mechanics - Register, Login and Logout
 - User state management
-- Route guards for logged in user and owner(publisher of content)
+- Route guards for logged in user and owner (publisher of content)
 - CRUD - Create, Read, Update and Delete functionality.
 
 The site is some kind of catalog for different Linux distributions.
 - Adding - System from combine of Desktop environment and Distribution
 - Read - Showing all systems, show details of the system
-- Editing - System depending on is user is owner(publisher of current system)
+- Editing - System depending on is user is owner (publisher of current system)
 - Deleting - Delete specific system
 - Commentary - for the systems
 
