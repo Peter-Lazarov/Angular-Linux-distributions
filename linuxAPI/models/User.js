@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Environment'
     }],
-    publishedDistribution: [{
+    publishedDistributions: [{
         type: mongoose.Types.ObjectId,
         ref: 'Distribution'
     }],
