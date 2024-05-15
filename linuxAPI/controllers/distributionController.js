@@ -1,6 +1,6 @@
 const distributionController = require('express').Router();
 
-const { isAuthenticated } = require('../middlewares/userMiddleware');
+const userMiddleware = require('../middlewares/userMiddleware');
 const { getErrorMessage } = require('../utility/errorsUtility');
 const distributionService = require('../services/distributionService');
 
@@ -10,7 +10,7 @@ distributionController.get('/', async (request, response) => {
     response.json(distributionAll);
 });
 
-distributionController.post('/add', isAuthenticated, async (request, response) => {
+distributionController.post('/add', userMiddleware.attachUserInRequest, userMiddleware.isAuthenticated, async (request, response) => {
     const distributionForm = request.body;
 
     try {
